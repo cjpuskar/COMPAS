@@ -133,6 +133,7 @@ While I didn't parse data out for every possible opportunity (parse out country_
   Forgot to insert build_id so lets do that next!
 
   - setBuildId.sql
+
   ```sql
   USE staffconsol1
   GO
@@ -144,6 +145,7 @@ While I didn't parse data out for every possible opportunity (parse out country_
 And finally lets pair each applicant record with the build ID they belong to.
 
 - applicantsToBuildAppConn
+
 ```sql
 USE staffconsol1
 GO
@@ -153,17 +155,20 @@ INSERT INTO dbo.build_app_conn (app_ID, build_ID)
 SELECT ID, build_ID FROM dbo.applicants;
 ```
 
-
-
-
 ### Questions, Concerns, Observations
 
 * site_id (S)
 
->> Im fairly certain we need to retain site_id in our database but I wasnt entirely sure which target field to put it in.....
+  Im fairly certain we need to retain site_id in our database but I wasnt entirely sure which target field to put it in.
 
 * notes (S)
 
->> I didnt really see an applicable target field to place the notes data in but some of the pieces of info like availability, availability for interviews, and technical skills would be important things to store in the database....
+  I didnt really see an applicable target field to place the notes data in but some of the pieces of info like availability, availability for interviews, and technical skills would be important things to store in the database..
 
->> Also the format of the notes section is making it difficult to load into SQL Server.
+* address (S)
+
+  Some of the rows in the address field have address, city, province, and country combined while others only have the street address.
+
+* Lookup fields
+
+  Several fields look theyre lookups which means we would also have to import those tables into our compas database in a full fledged data integration.
