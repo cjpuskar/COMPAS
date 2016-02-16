@@ -92,7 +92,7 @@ While I didn't parse data out for every possible opportunity below are a few exa
 
   I imported the applicant_subset_dbImport.csv file into SQL Server using the Import Wizard.
 
-  Before I imported into the DB I changed the delimiter from comma to pipe.
+  Before I imported into the DB I changed the delimiter from COMMA to PIPE.
 
 ## SQL Queries
 
