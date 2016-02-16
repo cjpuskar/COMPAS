@@ -2,25 +2,41 @@
 
 ## Table of Contents
 
--[Synopsis](#synopsis)
--[Dependencies](#dependencies)
--[View Data](#view-data)
--[Source Target Mapping](#source-target-mapping)
--[Data Parsing](#data-parsing-/-formatting)
--[Import To SQL Server](#import-to-sql-server)
--[Questions & Comments](#questions-&-comments)
+- [Synopsis](#synopsis)
+- [High Level Overview](#high-level-overview)
+- [Dependencies](#dependencies)
+- [View Data](#view-data)
+- [Source Target Mapping](#source-target-mapping)
+- [Data Parsing](#data-parsing-/-formatting)
+- [Import To SQL Server](#import-to-sql-server)
+- [Questions & Comments](#questions-&-comments)
 
 
 ## Synopsis
-Moving applicant information data from a clients system to COMPAS SQL Server environment
+Moving applicant data from a clients system to COMPAS SQL Server environment
 
 Source: CSV file (comma delimited)
-Target: applicants.sql schema
+Target: applicants table (schema in applicants.sql)
+
+## High Level Overview
+
+1. Import and view data in Excel
+2. Create a Source / Target field mapping.
+3. Identify source fields where the data needs to be parsed into multiple fields.
+4. Identify fields where data formatting is inconsistent.
+5. Change file format delimiters to pipe.
+6. Load data into a temp DB table.
+7. INSERT data from temp db into applicants table as defined in source target mapping.
+8. Insert build ID into applicants table.
+9. Insert build ID and applicant ID into build_app_conn table.
+
+DISCLAIMER: I realize that the purpose of this assessment is more about thought process as oppose to being 100% correct but I still thought it worth mentioning that had this been a real data migration with a real client I would have sought out more clarification on which source fields we needed to keep, which source fields needed parsed, ect. as opposed to making best guesses.
+
 
 ## Dependencies
 
 - VMWare Fusion
-- Windows
+- Windows 10
 - MS SQL Server Management Studio
 
 ## View Data
@@ -43,17 +59,22 @@ Create a document to map out source fields and their corresponding target fields
 
 ### Data Parsing
 
+While viewing the data in Excel, I noticed several source fields that needed parsing in order to fill out their target field counterparts.
+
+While I didn't parse data out for every possible opportunity (parse out country_id based off of state and provinces data, or pull technical skills out of notes field, ect) below are a few exmaples of where I did.
+
 * Source (S) into app_source (T) & source_name (T)
 
->>I made the assumption that app_source was something like (Job Board, intranet, Career Site) and source_name was the name of that particular job board so I parsed source (s) into app_source and source_name.
+  I made the assumption that app_source was something like (Job Board, intranet, Career Site) and source_name was the name of that particular job board so I parsed source (s) into app_source and source_name.
 
 * Notes, Desired Salary, Current Salary (S) into app_salary, app_hourly (T)
 
->> There were several issues getting salary into the database. The first was that the salary amounts were in 1 of 3 places.
->>>Locations:
->>>> - Desired Salary
->>>> - Current Salary
->>>> - Notes
+  There were several issues getting salary into the database. The first was that the salary amounts were in 1 of 3 places.
+
+  Locations:
+  - Desired Salary
+  - Current Salary
+  - Notes
 
 >> It was also in multiple formats.
 
