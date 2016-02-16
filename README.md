@@ -10,7 +10,7 @@
 - [Data Parsing](#data-parsing-/-formatting)
 - [Import To SQL Server](#import-to-sql-server)
 - [SQL Queries](#sql-queries)
-- [Questions & Comments](#questions-&-comments)
+- [Questions and Comments](#questions-and-comments)
 
 
 ## Synopsis
@@ -155,7 +155,7 @@ And finally lets pair each applicant record with the build ID they belong to.
   SELECT ID, build_ID FROM dbo.applicants;
   ```
 
-## Questions & Comments
+## Questions and Comments
 
 * site_id (S)
 
