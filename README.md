@@ -155,7 +155,7 @@ INSERT INTO dbo.build_app_conn (app_ID, build_ID)
 SELECT ID, build_ID FROM dbo.applicants;
 ```
 
-### Questions, Concerns, Observations
+### Questions & Comments
 
 * site_id (S)
 
