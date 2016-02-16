@@ -62,7 +62,7 @@ Create a document to map out source fields and their corresponding target fields
 
 While viewing the data in Excel, I noticed several source fields that needed parsing in order to fill out their target field counterparts.
 
-While I didn't parse data out for every possible opportunity (parse out country_id based off of state and provinces data, or pull technical skills out of notes field, ect) below are a few exmaples of where I did.
+While I didn't parse data out for every possible opportunity below are a few examples of where I did.
 
 #### Source (S) into app_source (T) & source_name (T)
 
@@ -92,7 +92,7 @@ While I didn't parse data out for every possible opportunity (parse out country_
 
   I imported the applicant_subset_dbImport.csv file into SQL Server using the Import Wizard.
 
-  Before I imported into the DB I changed the delimter from comma to pipe.
+  Before I imported into the DB I changed the delimiter from comma to pipe.
 
 ## SQL Queries
 
