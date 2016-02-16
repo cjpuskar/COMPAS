@@ -43,12 +43,12 @@ DISCLAIMER: I realize that the purpose of this assessment is more about thought 
 The first step in the process is to import the CSV file into Excel so we can see what were working with.
 
 This serves 2 purposes:
-1. Allows us to spot any data quality / data formatting issues.
-2. Map source fields to target fields.
+ 1. Allows us to spot any data quality / data formatting issues.
+ 2. Map source fields to target fields.
 
 Importing the CSV file into Excel:
-1. Copy and paste 1st row of CSV file.
-2. Copy and paste remainder of file.
+ 1. Copy and paste 1st row of CSV file.
+ 2. Copy and paste remainder of file.
 
 ## Source Target Mapping
 Create a document to map out source fields and their corresponding target fields. This will serve as a guide for when I import the applicant data into SQL Server.
@@ -76,16 +76,16 @@ While I didn't parse data out for every possible opportunity (parse out country_
   - Current Salary
   - Notes
 
->> It was also in multiple formats.
+ It was also in multiple formats.
 
->>>Formats:
->>>> - $75.00, $65,000.00, $40/hr INC, $40/hr or 65-70,000/year, $42-$45/hr, $65.00/hour, $80-84K
+ Formats:
+ - $75.00, $65,000.00, $40/hr INC, $40/hr or 65-70,000/year, $42-$45/hr, $65.00/hour, $80-84K
 
->> How I resolved this was that I noticed whenever salary was in the data, it would always be written down in the Notes field and prefixed with the word 'Rate'. Using this I was able to parse it out of the Notes field. Based on what other characters were in the string, (hr / hour / k / year) I could determine if it was an hourly or yearly rate and once I had one I could calculate the other.
+ How I resolved this was that I noticed whenever salary was in the data, it would always be written down in the Notes field and prefixed with the word 'Rate'. Using this I was able to parse it out of the Notes field. Based on what other characters were in the string, (hr / hour / k / year) I could determine if it was an hourly or yearly rate and once I had one I could calculate the other.
 
 * state (S) into app_state, app_province (T)
 
->> The source field state had both american states and canadian provinces in the same field. I used an if statement to parse them into the correct target fields. I also noticed that while most state/provinces used a 2 character abbreviation, some did not so I changed them to a 2 character abbreviation to standardized the data.
+ The source field state had both american states and canadian provinces in the same field. I used an if statement to parse them into the correct target fields. I also noticed that while most state/provinces used a 2 character abbreviation, some did not so I changed them to a 2 character abbreviation to standardized the data.
 
 ### Questions, Concerns, Observations
 
