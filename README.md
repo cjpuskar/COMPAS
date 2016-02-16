@@ -144,16 +144,16 @@ While I didn't parse data out for every possible opportunity (parse out country_
 
 And finally lets pair each applicant record with the build ID they belong to.
 
-- applicantsToBuildAppConn
+  - applicantsToBuildAppConn
 
-```sql
-USE staffconsol1
-GO
+  ```sql
+  USE staffconsol1
+  GO
 
-INSERT INTO dbo.build_app_conn (app_ID, build_ID)
+  INSERT INTO dbo.build_app_conn (app_ID, build_ID)
 
-SELECT ID, build_ID FROM dbo.applicants;
-```
+  SELECT ID, build_ID FROM dbo.applicants;
+  ```
 
 ### Questions & Comments
 
