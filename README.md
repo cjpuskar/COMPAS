@@ -155,7 +155,7 @@ And finally lets pair each applicant record with the build ID they belong to.
   SELECT ID, build_ID FROM dbo.applicants;
   ```
 
-### Questions & Comments
+## Questions & Comments
 
 * site_id (S)
 
